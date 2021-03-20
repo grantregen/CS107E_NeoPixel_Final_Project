@@ -1,5 +1,7 @@
 # CS107E NeoPixel Final Project
 
+<img src="./images/lightening_cloud_light.gif" width="500"/>
+
 ## Setting up your NeoPixels
 
 - Get a strip of NeoPixels [(here're the ones I bought)](https://www.amazon.com/gp/product/B078S6Z9KG/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1).
