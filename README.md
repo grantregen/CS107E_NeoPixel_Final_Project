@@ -26,4 +26,18 @@ printf("%d\n", difference);
 ```
 However, after much troubleshooting, trying inline code vs. function calls, and changing the system caching system I decided to get a hold of an occiliscope to verify the signals. At a clock frequency of 250Mhz, the delays only could reach a frequency of 1MHz due to limitations in the speed of a non-assembly for loop and gpio_set high function call. Thus, I changed to Julie's awesome assembly neopixel timing code (which was a lifesaver) and did some tests with the occiliscope. 
 
-## Setting up your NeoPixels to use the driver (and things I learned)
+<img src="./images/zero_and_one_bits.jpg" width="1000"/>
+
+I then did a sanity check with the reccomended pullup resistor of 300 - 500 ohms (mine was 390 ohms) to get a similar signal: 
+
+<img src="./images/bits_with_pullup_resistor.jpg" width="400"/>
+
+For the project, I'm using a slightly newer model neopixel than the asembly code was written for, so I tried both the reccomended new signal times and the old bit times. Both worked, so I decided to keep the old bit timings so the code could work across models. Also, the reset bit changed quite a lot, but this is defined at the top of the neopixel.c code to allow the user to change bw old and new neopixels. 
+
+After spending two days wondering why these signals didn't work, I figured out I hadn't grounded the pi to a common ground to my power source (which I've included in the Setup instructions section). I also learned that my power supply was not able to run all 300 of my neopixels without setting them to a lower brightness. I tried increasing the voltage beyond 5V, but this seemed to only work when not sending signals (as the signals need a ~5V power input to pass instructions correctly. 
+
+Once th signals were sending right, I wrote a basic driver generalized to any size of neopixel strip. The driver runs off of a type of bufffer array that contains all the pixel values for the strip at one time. With this simple driver I tested a few simple but well tested light display functions, culminating in the run_lightening() function for my cloud light. 
+
+I then did a little bit of arts and crafts and wire managment to create a thunder cloud/ mood light with my neopixels which went from this to this: 
+
+## Setting up your NeoPixels
