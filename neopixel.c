@@ -259,12 +259,12 @@ void run_strobe(color color_1, color color_2, float luminance,
 void run_fade(color color, unsigned int time, unsigned int *neopixel_set){
     //fade into top brightness
     for(int i = 10; i<100; i++){
-      run_solid_color(color, 0.01*i, neopixel_set);
+      run_solid_color(color, 0.02*i, neopixel_set);
       timer_delay_ms(time);
     }
     //fade out to zero brightness
     for(int i = 99; i>10; i--){
-      run_solid_color(color, 0.01*i, neopixel_set);
+      run_solid_color(color, 0.02*i, neopixel_set);
       timer_delay_ms(time);
     }
 }
@@ -355,16 +355,16 @@ void main (void)
 
     // EXAMPLES... simply uncomment to run different display...
 
-    run_solid_color(ORANGE, 2, neopixel_set);
+    run_solid_color(CS107E_ELECTRIC_BLUE, 2, neopixel_set);
 
     // while(1){
     // run_lightening(neopixel_set);
-    // timer_delay(1);
+    // timer_delay_ms(800);
     // }
 
     // color rainbow[7] = {RED, ORANGE, YELLOW, GREEN, BLUE, BRIGHT_PINK, VIOLET};
     // while(1){
-    //   run_random(rainbow, 7, 100, 2, neopixel_set);
+    //   run_random(rainbow, 7, 100, 6, neopixel_set);
     //   timer_delay_ms(10);
     // }
 
@@ -373,28 +373,8 @@ void main (void)
     // }
 
     // while(1){
-    //   run_strobe(WHITE, BLACK, 1.0, 10, neopixel_set);
+    //   run_strobe(WHITE, BLACK, 1.0, 50, neopixel_set);
     // }
 
     uart_putchar(EOT); // not strictly necessary, but signals to rpi-install that program is done
 }
-
-// // Code to run counter at 10 per microsecond!!!
-// volatile unsigned int *pinAddress;
-// pinAddress = (unsigned int *)0x2000B408; // Free Running Counter
-// volatile unsigned int *pinAddress_counter;
-// pinAddress_counter = (unsigned int *)0x2000B420; // Free Running Counter
-// printf("Time-Control Register = %d\n", *pinAddress);
-// unsigned int start = *pinAddress_counter;
-// //printf("%d\n", *pinAddress_counter);
-// timer_delay(10);
-// unsigned int stop = *pinAddress_counter;
-// unsigned int difference = stop - start;
-// printf("%d\n", difference);
-// *pinAddress = 0b000110000000001000000000;
-// printf("Time-Control Register = %d\n", *pinAddress);
-// start = *pinAddress_counter;
-// timer_delay(10);
-// stop = *pinAddress_counter;
-// difference = stop - start;
-// printf("%d\n", difference);
