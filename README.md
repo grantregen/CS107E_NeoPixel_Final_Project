@@ -1,5 +1,13 @@
 # CS107E NeoPixel Final Project
 
+## Setting up your NeoPixels
+
+- Get a strip of NeoPixels [(here're the ones I bought)](https://www.amazon.com/gp/product/B078S6Z9KG/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1).
+- Get a 300-500 ohm resistor, 1000 uF capacitor, and [a power source for your neopixels](https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels).
+- Wire the capacitor in parallel with your power lines and the resistor in series with the output data line from the pi and the input neopixel data line
+- Important: wire a pi ground pin in parallel with your power ground pin to share a reference for your signals
+- Finish off the last wiring and run the code :-) 
+
 ## Project Rundown 
 Here I create a basic driver for arduino neopixels to be run by output pin of raspberry pi. I origianlly tried for a long time to use the Pi's Timer Control Register to increase the counting frequency to a point where one could avoid using asembly to send data bits to the neopixels. I increased to clock frequency to 10Mhz (and eventually 250 Mhz) with the following code: 
 ```
@@ -40,4 +48,6 @@ Once th signals were sending right, I wrote a basic driver generalized to any si
 
 I then did a little bit of arts and crafts and wire managment to create a thunder cloud/ mood light with my neopixels which went from this to this: 
 
-## Setting up your NeoPixels
+<img src="./images/making_cloud_light.jpg" width="1000"/>
+
+Find short videos of the final runs in the video folder, and I hope to continue the light to be a smart natural light alarm clock that can be set to a specific wakeup time!
