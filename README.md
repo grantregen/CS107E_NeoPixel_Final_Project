@@ -1,4 +1,4 @@
-# CS107E NeoPixel Final Project
+# ☁️ CS107E NeoPixel Final Project ☁️
 
 <img src="./images/lightening_cloud_light.gif" width="500"/>
 
